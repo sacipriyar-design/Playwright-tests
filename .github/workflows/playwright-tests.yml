@@ -1,0 +1,31 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install pytest
+        pip install requests
+        pip install playwright
+        playwright install chromium
+    
+    - name: Run API tests
+      run: |
+        cd Test_DemoBlaze
+        pytest test_login.py -v
