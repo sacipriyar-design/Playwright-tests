@@ -11,7 +11,7 @@ class cartpage:
         dialog.accept()
 
     def navigate_to_products(self):
-        self.page.get_by_text(" Products").click()
+        self.page.get_by_role("link", name=" Products").click()
     
     def search_product(self, product_name):
         self.page.fill("#search_product",product_name)
@@ -23,3 +23,7 @@ class cartpage:
     def view_cart(self):
         self.page.get_by_text("View Cart").click()
         assert "view_cart" in self.page.url
+
+    def Logout(self):
+        self.page.get_by_text(" Logout").click()
+        assert "login" in self.page.url
