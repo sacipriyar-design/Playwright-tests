@@ -17,6 +17,8 @@ class paymentpage:
         self.page.wait_for_url("**/checkout**")
         self.page.get_by_text("Place Order").click()
         self.page.wait_for_url("**/payment**",wait_until="commit")
+    
+    
 
     def payment_page(self,name,cardnumber,cvc,mm,yyyy):
         self.page.fill("[data-qa='name-on-card']", name)
@@ -25,5 +27,5 @@ class paymentpage:
         self.page.fill("[data-qa='expiry-month']",mm)
         self.page.fill("[data-qa='expiry-year']", yyyy)
         self.page.click("[data-qa='pay-button']")
-        assert "payment_done" in self.page.url
+        
 

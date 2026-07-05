@@ -22,8 +22,15 @@ class cartpage:
     
     def view_cart(self):
         self.page.get_by_text("View Cart").click()
-        assert "view_cart" in self.page.url
+        
 
     def Logout(self):
         self.page.get_by_text(" Logout").click()
-        assert "login" in self.page.url
+       
+
+    def get_product_name(self):
+        return self.page.locator(".product-image-wrapper .productinfo p").first.text_content()
+
+    def get_all_search_results(self):
+        self.page.locator(".product-image-wrapper .productinfo p").first.wait_for()
+        return self.page.locator(".product-image-wrapper .productinfo p").all_text_contents()
