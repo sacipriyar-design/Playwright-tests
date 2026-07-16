@@ -12,5 +12,5 @@ def test_login(test_goto_page,email,password):
     login_page=LoginPage(test_goto_page)
     login_page.goto_page()
     login_page.login(email,password)
-    login_page.is_login_successful()
+    assert login_page.is_login_successful()
     login_page.Logout()

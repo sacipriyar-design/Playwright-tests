@@ -3,7 +3,7 @@ import pytest
 from pages.contact_page import ContactPage
 from pages.login_page import LoginPage
 from pages.cart_page import cartpage
-EMAIL="Test1@email.com"
+EMAIL="Test112@email.com"
 PASSWORD="password123"
 @pytest.fixture
 def test_goto_page():

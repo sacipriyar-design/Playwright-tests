@@ -4,7 +4,7 @@ class signup:
     def __init__(self,page):
         self.page=page
         self.dialog_message=None
-        self.page.on("dialog",lambda dailog: self._handle_dialog())
+        self.page.on("dialog",lambda dialog: self._handle_dialog(dialog))
 
     def _handle_dialog(self,dialog):
         dialog_message=dialog.message

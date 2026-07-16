@@ -9,7 +9,7 @@ class paymentpage:
 
     def _handle_dialog(self,dialog):
         self.dialog_message=dialog.message
-        dialog.close()
+        dialog.accept()
 
     def proceed_checkout(self):
         
