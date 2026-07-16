@@ -20,7 +20,7 @@ class LoginPage:
         self.page.wait_for_timeout(3000)
     
     def is_login_successful(self):
-       return self.page.locator("#loggedInUser").is_visible()
+       return self.page.get_by_text(" Logged in as ").is_visible()
 
     def Logout(self):
         self.page.get_by_text("Logout").click()

@@ -8,7 +8,7 @@ PASSWORD="password123"
 @pytest.fixture
 def test_goto_page():
     with sync_playwright() as p:
-        Browser = p.chromium.launch(headless=True)
+        Browser = p.chromium.launch(headless=False)
         page=Browser.new_page()
         #page.goto("https://automationexercise.com/")
         yield page
