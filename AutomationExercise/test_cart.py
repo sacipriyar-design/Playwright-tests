@@ -4,23 +4,13 @@ import pytest
 from playwright.sync_api import expect
 import re
 
-def test_cart(test_goto_page):
-    cart=cartpage(test_goto_page)
-   
-    test_goto_page.goto("https://automationexercise.com/login")
-    test_goto_page.get_by_text("Signup / Login").click()
-    test_goto_page.fill("[data-qa='login-email']","Test1@email.com")
-    test_goto_page.fill("[data-qa='login-password']","password123")
-    test_goto_page.locator("button",has_text="Login").click()
-    expect(test_goto_page.get_by_text("Logged in as")).to_be_visible()
-
-    cart.navigate_to_products()
-    cart.search_product("Men Tshirt")
-    expect(test_goto_page.locator(".product-image-wrapper").first).to_be_visible()
-    cart.add_to_cart()
-    cart.view_cart()
-    expect(test_goto_page).to_have_url(re.compile("view_cart"))
-    cart.Logout()
+def test_cart(cart_page_login):
+    cart_page_login.search_product("Men Tshirt")
+    expect(cart_page_login.page.locator(".product-image-wrapper").first).to_be_visible()
+    cart_page_login.add_to_cart()
+    cart_page_login.view_cart()
+    expect(cart_page_login.page).to_have_url(re.compile("view_cart"))
+    cart_page_login.Logout()
 
 
 def test_cart_without_Login(test_goto_page):
